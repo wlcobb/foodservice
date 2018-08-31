@@ -1,13 +1,12 @@
 # Assignment 2 - Building an Integrated Multi-Table Web Application
 
 ## Objectives
-Demonstrate basic HTML, Python skills in building a web application integrated with both a database and an external web services using an IDE (Integrated Development Environment).
-Demonstrate your ability to work with cloud based systems and on premise applications and services.
-Gain an understanding of the value of the MVC (Model View Controller)  and MVT (Model View Template) Frameworks used in Python, Ruby, PHP, Java and  .NET today.
-Develop a MULTI-TABLE web/database application.
-Demonstrate best practice code management by using Git on your laptop and Github as a code repository.  
-Demonstrate ability to build and execute functional test cases for an application.
-
+1. Demonstrate basic HTML, Python skills in building a web application integrated with both a database and an external web services using an IDE (Integrated Development Environment).
+2. Demonstrate your ability to work with cloud based systems and on premise applications and services.
+3. Gain an understanding of the value of the MVC (Model View Controller)  and MVT (Model View Template) Frameworks used in Python, Ruby, PHP, Java and  .NET today.
+4. Develop a MULTI-TABLE web/database application.
+5. Demonstrate best practice code management by using Git on your laptop and Github as a code repository.  
+6. Demonstrate ability to build and execute functional test cases for an application.
 
 ## Introduction
 I use the Maverick  Food Services as a name for a fictitious organization which provides food services in a campus setting. Imagine if you were a catering manager for the food services organization and needed to keep track of their customers and want to grow their profits by marketing to these customers and their colleagues. To do that you need some type of a database to track your customers and the products and services they acquire from you over time.  This is sometime called a customer information database or a customer relationship management database or CRM for short. We will be building a CRM for the Maverick Food services Organization. I am providing an application shell which starts the application but you must complete it both on your local machine and deploy the application to the Heroku cloud hosting facility or to PythonAnywhere.
