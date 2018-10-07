@@ -1,13 +1,17 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
 from .models import *
 from .forms import *
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
+from django.shortcuts import render
 
+
+
+now = timezone.now()
 def home(request):
-   return render(request, 'crm/home.html',
+    return render(request, 'crm/home.html',
                  {'crm': home})
+
 
 @login_required
 def customer_list(request):
@@ -38,6 +42,7 @@ def customer_delete(request, pk):
    customer = get_object_or_404(Customer, pk=pk)
    customer.delete()
    return redirect('portfolio:customer_list')
+
 @login_required
 def service_list(request):
    services = Service.objects.filter(created_date__lte=timezone.now())
@@ -81,24 +86,6 @@ def service_delete(request, pk):
     service = get_object_or_404(Service, pk=pk)
     service.delete()
     return redirect('crm:service_list')
-
-
-@login_required
-def service_new(request):
-   if request.method == "POST":
-       form = ServiceForm(request.POST)
-       if form.is_valid():
-           service = form.save(commit=False)
-           service.created_date = timezone.now()
-           service.save()
-           services = Service.objects.filter(created_date__lte=timezone.now())
-           return render(request, 'crm/service_list.html',
-                         {'services': services})
-   else:
-       form = ServiceForm()
-       # print("Else")
-   return render(request, 'crm/service_new.html', {'form': form})
-
 
 @login_required
 def product_list(request):
@@ -144,3 +131,4 @@ def product_delete(request, pk):
     product = get_object_or_404(Service, pk=pk)
     product.delete()
     return redirect('crm:service_list')
+
