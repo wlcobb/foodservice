@@ -67,6 +67,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crm',
+    'django.contrib.humanize',
+    'mathfilters',
 ]
 
 MIDDLEWARE = [
@@ -152,4 +154,14 @@ STATICFILES_DIRS = (
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 #STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-LOGIN_REDIRECT_URL = '/home '
+LOGIN_REDIRECT_URL = '/home'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' \
+                ''
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = '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'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

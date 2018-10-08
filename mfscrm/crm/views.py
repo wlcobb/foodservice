@@ -4,6 +4,7 @@ from .forms import *
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
 from django.shortcuts import render
+from django.db.models import Sum
 
 
 
@@ -132,3 +133,16 @@ def product_delete(request, pk):
     product.delete()
     return redirect('crm:service_list')
 
+@login_required
+def summary(request, pk):
+    customer = get_object_or_404(Customer, pk=pk)
+    customers = Customer.objects.filter(created_date__lte=timezone.now())
+    services = Service.objects.filter(cust_name=pk)
+    products = Product.objects.filter(cust_name=pk)
+    sum_service_charge = Service.objects.filter(cust_name=pk).aggregate(Sum('service_charge'))
+    sum_product_charge = Product.objects.filter(cust_name=pk).aggregate(Sum('charge'))
+    return render(request, 'crm/summary.html', {'customers': customers,
+                                                    'products': products,
+                                                    'services': services,
+                                                    'sum_service_charge': sum_service_charge,
+                                                    'sum_product_charge': sum_product_charge,})
